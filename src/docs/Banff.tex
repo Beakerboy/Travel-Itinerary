@@ -1,0 +1,332 @@
+% Complete travel itinerary template. Created and compiled online at https://letx.app
+\documentclass[11pt,a4paper]{article}
+
+% Base packages
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+
+% Typography - Lato Sans Serif
+\usepackage[defaultsans]{lato}
+\renewcommand{\familydefault}{\sfdefault}
+\usepackage{microtype}
+
+% Layout and margins
+\usepackage[margin=0.5in, top=0.5in, bottom=0.5in]{geometry}
+\usepackage{tabularx}
+\usepackage{booktabs}
+\usepackage{xcolor}
+\usepackage{colortbl}
+\usepackage{enumitem}
+\usepackage{fancyhdr}
+\usepackage{hyperref}
+\usepackage{textcomp}
+
+% Beautiful boxes (tcolorbox)
+\usepackage[many]{tcolorbox}
+\tcbuselibrary{skins, breakable}
+
+% Icons
+\usepackage{fontawesome5}
+\usepackage{comment}
+
+% Define colors (Teal & Coral travel palette)
+\definecolor{primary}{HTML}{0D7C66}     % Elegant Teal Accent
+\definecolor{primarylight}{HTML}{F3FAF8} % Soft Teal Tint
+\definecolor{accent}{HTML}{E28F83}      % Soft Coral Accent
+\definecolor{darktext}{HTML}{2D3748}    % Slate Dark for readability
+\definecolor{lighttext}{HTML}{718096}   % Slate Muted for notes
+\definecolor{bordercol}{HTML}{E2E8F0}   % Neutral border line
+\definecolor{cardbg}{HTML}{FFFFFF}      % Card Background
+
+% Set paragraph styles for key/value tables alignment
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{0pt}
+
+% Hyperref configuration
+\hypersetup{
+    colorlinks=true,
+    linkcolor=primary,
+    urlcolor=primary,
+    pdftitle={Banff Travel Itinerary},
+}
+
+% Header and Footer configuration
+\pagestyle{fancy}
+\fancyhf{}
+\renewcommand{\headrulewidth}{0pt}
+\renewcommand{\footrulewidth}{0.5pt}
+\renewcommand{\footrule}{\hbox to\headwidth{\color{bordercol}\leaders\hrule height \footrulewidth\hfill}}
+\fancyfoot[L]{\color{lighttext}\small Banff Itinerary}
+\fancyfoot[R]{\color{lighttext}\small Page \thepage\ of 2}
+
+% Custom styling for day card tcolorbox
+\newtcolorbox{daycard}[2][]{
+    enhanced,
+    breakable,
+    colback=cardbg,
+    colframe=primary,
+    coltitle=white,
+    fonttitle=\bfseries\large,
+    title={#2},
+    attach boxed title to top left={yshift=-2mm, xshift=4mm},
+    boxed title style={
+        colback=primary,
+        colframe=primary,
+        arc=1.5mm,
+        left=4mm,
+        right=4mm,
+        top=1mm,
+        bottom=1mm,
+    },
+    top=4mm,
+    bottom=3mm,
+    left=4mm,
+    right=4mm,
+    arc=2mm,
+    boxrule=0.8pt,
+    shadow={1mm}{-1mm}{0mm}{bordercol},
+    #1
+}
+
+% Custom styling for summary card
+\newtcolorbox{summarycard}[1][]{
+    enhanced,
+    colback=primarylight,
+    colframe=bordercol,
+    top=4mm,
+    bottom=4mm,
+    left=4mm,
+    right=4mm,
+    arc=2mm,
+    boxrule=0.8pt,
+    #1
+}
+
+% Custom styling for quick tips card
+\newtcolorbox{tipscard}[2][]{
+    enhanced,
+    colback=cardbg,
+    colframe=accent,
+    coltitle=white,
+    fonttitle=\bfseries\large,
+    title={#2},
+    attach boxed title to top left={yshift=-2mm, xshift=4mm},
+    boxed title style={
+        colback=accent,
+        colframe=accent,
+        arc=1.5mm,
+        left=4mm,
+        right=4mm,
+        top=1mm,
+        bottom=1mm,
+    },
+    top=4mm,
+    bottom=3mm,
+    left=4mm,
+    right=4mm,
+    arc=2mm,
+    boxrule=0.8pt,
+    shadow={1mm}{-1mm}{0mm}{bordercol},
+    #1
+}
+
+\begin{document}
+
+% --- TRIP HEADER ---
+\begin{tcolorbox}[
+    enhanced,
+    colback=primary,
+    colframe=primary,
+    arc=2mm,
+    left=6mm,
+    right=6mm,
+    top=4mm,
+    bottom=4mm,
+    boxrule=0pt,
+    valign=center
+]
+    \color{white}
+    \begin{tabularx}{\linewidth}{@{}X r@{}}
+        {\Huge\bfseries\sffamily Banff Hiking} & \raisebox{-2mm}{\Huge\color{accent}\faIcon{map-marked-alt}} \\
+        {\large\bfseries\color{accent} Three Day Hike} & \\
+    \end{tabularx}
+    
+    \vspace{3mm}
+    \hrule height 0.5pt \color{primarylight}
+    \vspace{3mm}
+    
+    \begin{tabularx}{\linewidth}{@{}X X X@{}}
+        \color{white}\faIcon{calendar-alt}\ \textbf{Dates:} Sep 23 -- 27, 2026 &
+        \color{white}\faIcon{user-friends}\ \textbf{Travelers:} Hanry, Anthony, Speedy, Kevin, \& Kevin &
+        \color{white}\faIcon{map-marker-alt}\ \textbf{Base:} Canmore, Canada
+    \end{tabularx}
+\end{tcolorbox}
+
+\vspace{3mm}
+
+% --- TRIP SUMMARY BLOCK ---
+\begin{summarycard}
+    \begin{tabularx}{\linewidth}{@{}
+        >{\color{primary}\bfseries\small\faIcon{plane}\ }l@{\hspace{4mm}}>{\raggedright\arraybackslash\small}X@{\hspace{8mm}}
+        >{\color{primary}\bfseries\small\faIcon{clock}\ }l@{\hspace{4mm}}>{\raggedright\arraybackslash\small}X@{\hspace{8mm}}
+        >{\color{primary}\bfseries\small\faIcon{check-circle}\ }l@{\hspace{4mm}}>{\raggedright\arraybackslash\small}X@{}
+    }
+        Flight &  (CVG $\rightarrow$ DFW $\rightarrow$ YYC) & Time & 9/23 6:00 AM -- 11:55 AM & Conf & ARJWFT \\
+        Flight &  (YYC $\rightarrow$ YYZ $\rightarrow$ CVG) & Time & 9/27 6:30 AM -- 3:53 PM & Conf & C3XI6T \\
+    \end{tabularx}
+    \begin{tabularx}{\linewidth}{@{}
+        >{\color{primary}\bfseries\small\faIcon{car}\ }l@{\hspace{4mm}}>{\raggedright\arraybackslash\small}X@{\hspace{8mm}}
+        >{\color{primary}\bfseries\small\faIcon{location-arrow}\ }l@{\hspace{4mm}}>{\raggedright\arraybackslash\small}X@{\hspace{8mm}}
+        >{\color{primary}\bfseries\small\faIcon{check-circle}\ }l@{\hspace{4mm}}>{\raggedright\arraybackslash\small}X@{}
+    }
+        Car &  Budget & Address & ---- & Conf & ---- \\
+    \end{tabularx}
+    \begin{tabularx}{\linewidth}{@{}
+        >{\color{primary}\bfseries\small\faIcon{hotel}\ }l@{\hspace{4mm}}>{\raggedright\arraybackslash\small}X@{\hspace{8mm}}
+        >{\color{primary}\bfseries\small\faIcon{location-arrow}\ }l@{\hspace{4mm}}>{\raggedright\arraybackslash\small}X@{\hspace{8mm}}
+        >{\color{primary}\bfseries\small\faIcon{check-circle}\ }l@{\hspace{4mm}}>{\raggedright\arraybackslash\small}X@{}
+    }
+        Condo &  Canmore AirBNB & Address & 999 Bow Valley Trail & Conf & ---- \\
+        Hotel &  Holiday Inn Calgary Airport & Address & 1250 McKinnon Dr NE & Conf & 47274135 \\
+    \end{tabularx}
+\end{summarycard}
+
+\vspace{4mm}
+
+% --- DAY 1 CARD ---
+\begin{daycard}{\faIcon{calendar-day} \quad Day 1: Travel }
+    \arrayrulecolor{bordercol}
+    \begin{tabularx}{\linewidth}{@{}
+        >{\bfseries\color{primary}\sffamily\small}r@{\hspace{5mm}}
+        >{\raggedright\arraybackslash}X
+        @{}
+    }
+        03:00 AM & \textbf{Meet At Anthony's} \hfill \textit{\small\color{lighttext}\faIcon{map-marker-alt}\ Frankfort} \\
+                  & Carpool to the airport. \\
+        \midrule
+        6:00 AM & \textbf{Flight} \hfill \textit{\small\color{lighttext}\faIcon{plane}\ CVG $\rightarrow$ DFW $\rightarrow$ YYC} \\
+                  &  American Airlines\\
+        \midrule
+        11:55 AM & \textbf{Land In Calgary} \hfill \textit{\small\color{lighttext}\faIcon{map-marker-alt}\ Calgary} \\
+                  & Pick up car. \\
+        \midrule
+        3:00 PM & \textbf{} \hfill \textit{\small\color{lighttext}\faIcon{car}\ Canmore} \\
+                  & 90 minute drive to Canmore. \\
+        \midrule
+        ??? PM & \textbf{} \hfill \textit{\small\color{lighttext}\faIcon{utensils}\ Canmore} \\
+                  & Grocery. Explore Canmore, Dinner?
+    \end{tabularx}
+\end{daycard}
+
+\vspace{5mm}
+
+%\newpage
+
+% --- DAY 2 CARD ---
+\begin{daycard}{\faIcon{calendar-day} \quad Day 2: Mt Niblock 9 mi 4200 ft}
+    \arrayrulecolor{bordercol}
+    \begin{tabularx}{\linewidth}{@{}
+        >{\bfseries\color{primary}\sffamily\small}r@{\hspace{5mm}}
+        >{\raggedright\arraybackslash}X
+        @{}
+    }
+        04:00 AM & \textbf{Travel} \hfill \textit{\small\color{lighttext}\faIcon{map-marker-alt}\ Banff} \\
+                  & Drive to Lake Louise (1 hr) \\
+        \midrule
+        06:00 AM & \textbf{Hike} \hfill
+\textit{\small\color{lighttext}\faIcon{map-marker-alt}\ Banff} \\
+                  & 1 hr to the teahouse and 3hr scree and boulder hike to summit. Out and back. \\
+    \end{tabularx}
+\end{daycard}
+
+\vspace{5mm}
+% --- DAY 3 CARD ---
+\begin{daycard}{\faIcon{calendar-day} \quad Day 3: The Onion 12 mile, 3000ft}
+    \arrayrulecolor{bordercol}
+    \begin{tabularx}{\linewidth}{@{}
+        >{\bfseries\color{primary}\sffamily\small}r@{\hspace{5mm}}
+        >{\raggedright\arraybackslash}X
+        @{}
+    }
+        04:00 AM & \textbf{Travel} \hfill \textit{\small\color{lighttext}\faIcon{map-marker-alt}\ Banff} \\
+                  & Drive to Bow Lake (1.5 hr). \\
+        \midrule
+        06:00 AM & \textbf{Hike} \hfill
+\textit{\small\color{lighttext}\faIcon{map-marker-alt}\ Banff} \\
+                  & 9hr hike and scramble. Out and back. \\
+    \end{tabularx}
+\end{daycard}
+
+\vspace{5mm}
+
+% --- DAY 4 CARD ---
+\begin{daycard}{\faIcon{calendar-day} \quad Day 4: Tower of Babel (3 mile, 1600 ft) and Travel}
+    \arrayrulecolor{bordercol}
+    \begin{tabularx}{\linewidth}{@{}
+        >{\bfseries\color{primary}\sffamily\small}r@{\hspace{5mm}}
+        >{\raggedright\arraybackslash}X
+        @{}
+    }
+        04:00 AM & \textbf{Mountains?} \hfill \textit{\small\color{lighttext}\faIcon{map-marker-alt}\ Banff} \\
+                  & Drive to Morraine Lake 1.25 hr \\
+        \midrule
+        06:00 AM & \textbf{Hike} \hfill \textit{\small\color{lighttext}\faIcon{map-marker-alt}\ Banff} \\
+                  & 3 hr scree scramble\\
+        \midrule
+        5:30 PM & \textbf{Drive to Calgary} \hfill \textit{\small\color{lighttext}\faIcon{car}\ Calgary} \\
+                  & Drive to airport hotel, 2.5hr. Return car? \\
+    \end{tabularx}
+\end{daycard}
+
+\vspace{5mm}
+
+% --- DAY 5 CARD ---
+\begin{daycard}{\faIcon{calendar-day} \quad Day 5: Travel}
+    \arrayrulecolor{bordercol}
+    \begin{tabularx}{\linewidth}{@{}
+        >{\bfseries\color{primary}\sffamily\small}r@{\hspace{5mm}}
+        >{\raggedright\arraybackslash}X
+        @{}
+    }
+        04:00 AM & \textbf{Wake Up} \hfill \textit{\small\color{lighttext}\faIcon{map-marker-alt}\ Calgary} \\
+                  & Shuttle to Airpiort? \\
+        \midrule
+        6:30 AM & \textbf{Flight} \hfill \textit{\small\color{lighttext}\faIcon{plane}\ YYC $\rightarrow$ YYZ $\rightarrow$ CVG} \\
+                  & Air Canada. \\
+        \midrule
+        3:53 PM & \textbf{Arrive Home} \hfill \textit{\small\color{lighttext}\faIcon{map-marker-alt}\ Cincinnati} \\
+                  & ---. \\
+    \end{tabularx}
+\end{daycard}
+\vspace{5mm}
+
+\begin{comment}
+% --- QUICK TIPS & CONTACTS CARD ---
+\begin{tipscard}{\faIcon{info-circle} \quad Travel Essentials \& Contacts}
+    \arrayrulecolor{bordercol}
+    \begin{tabularx}{\linewidth}{@{}
+        >{\color{primary}\bfseries\small}l@{\hspace{4mm}}
+        >{\raggedright\arraybackslash\small}X@{\hspace{8mm}}
+        >{\color{primary}\bfseries\small}l@{\hspace{4mm}}
+        >{\raggedright\arraybackslash\small}X@{}
+    }
+        Hotel Phone & +81 75-253-1250 & Emergency & 119 (Medical/Fire) / 110 (Police) \\
+        Taxi Service & Yasaka Taxi (+81 75-842-1212) & Currency & Yen (\textyen) -- Cash is preferred in temples \\
+        Wi-Fi Details & Mimaru\_Guest / Pass: \texttt{kyoto2026} & Apps & Japan Travel by NAVITIME, Nexa Maps \\
+        Transport Pass & Suica / Pasmo IC card or QR Bus Pass & Language & Arigatou Gozaimasu (Thank you)
+    \end{tabularx}
+    
+    \vspace{4mm}
+    \hrule height 0.5pt \color{bordercol}
+    \vspace{3mm}
+    
+    \textbf{\faIcon{exclamation-triangle}\ Important Travel Reminders:}
+    \begin{itemize}[leftmargin=4mm, labelsep=2mm, topsep=1mm, itemsep=1mm, parsep=0pt]
+        \item \textbf{Trash Disposal:} Kyoto has very few public trash cans. Carry a small plastic bag to store trash until you return to the hotel.
+        \item \textbf{Temple Etiquette:} Remove shoes when entering temple halls (look for shelves/plastic bags). Photography is banned inside main halls.
+        \item \textbf{Bus Boarding:} Board buses from the rear door and pay at the front door when exiting. Exact change is required (IC cards accepted).
+    \end{itemize}
+\end{tipscard}
+\end{comment}
+
+\end{document}
